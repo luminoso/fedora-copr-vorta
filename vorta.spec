@@ -1,7 +1,7 @@
 %global srcname vorta
 
 Name:           %{srcname}
-Version:        0.7.1
+Version:        0.7.2
 Release:        1%{?dist}
 Summary:        A GUI for Borg Backup
 License:        GPLv3
@@ -44,8 +44,7 @@ to protect your data from disk failure, ransomware and theft
 
 %install
 %py3_install
-
-install -D %{_builddir}/%{srcname}-%{version}/package/icon.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/com.borgbase.Vorta.svg
+install -D %{_builddir}/%{srcname}-%{version}/build/lib/vorta/assets/icons/icon.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/com.borgbase.Vorta.svg
 install -D %{_builddir}/%{srcname}-%{version}/package/icon-symbolic.svg %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps/com.borgbase.Vorta-symbolic.svg
 install -D %{_builddir}/%{srcname}-%{version}/src/vorta/assets/metadata/com.borgbase.Vorta.desktop %{buildroot}%{_datadir}/applications/com.borgbase.Vorta.desktop
 
@@ -58,9 +57,8 @@ install -D %{_builddir}/%{srcname}-%{version}/src/vorta/assets/metadata/com.borg
 %{_datadir}/*
 
 %changelog
+* Sun Jan 31 2021 Guilherme Cardoso <gjc@ua.pt> 0.7.2-1
+- Fix vorta icon.svg source path
+
 * Sat Jan 2 2021 Guilherme Cardoso <gjc@ua.pt> 0.7.1-1
 - Initial release
-
-
-
-
