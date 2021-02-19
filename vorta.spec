@@ -1,7 +1,8 @@
 %global srcname vorta
+%global debug_package %{nil}
 
 Name:           %{srcname}
-Version:        0.7.2
+Version:        0.7.3
 Release:        1%{?dist}
 Summary:        A GUI for Borg Backup
 License:        GPLv3
@@ -9,7 +10,6 @@ URL:            https://vorta.borgbase.com/
 #Source0:       %{pypi_source}
 Source0:        https://github.com/borgbase/vorta/archive/v%{version}.tar.gz
 
-Summary:        A GUI for Borg Backup
 Requires:       python3-appdirs
 Requires:       python3-paramiko
 Requires:       python3-peewee
@@ -23,12 +23,15 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-pip
 BuildRequires:  python3-wheel
+BuildRequires:  python-rpm-macros
 
 # opensuse compatibility layer taken from copr taw/element
 %if 0%{?suse_version:1}
 # https://en.opensuse.org/openSUSE:Build_Service_cross_distribution_howto
 #BuildRequires: libappstream-glib8 appstream-glib
 BuildRequires: ca-certificates-cacert ca-certificates-mozilla ca-certificates
+BuildRequires: python38-setuptools-git
+BuildRequires: python38-pytest-runner
 %if 0%{?sle_version}
 # Leap
 # provides libcrypto.so.1
@@ -39,34 +42,24 @@ BuildRequires: libopenssl1_0_0
 %if 0%{?sle_version} == 150200
 # Leap 15.2
 %endif
+BuildRequires:  python3-setuptools_git
 %else
 # Tumbleweed
 # provides libcrypto.so.1
 BuildRequires: libcrypt1
 %endif
+%else
+# not opensuse
+BuildRequires: python3-setuptools-git
+BuildRequires: python3-pytest-runner
 %endif
-
-#%if 0%{?fedora} || 0%{?rhel} > 7
-#Recommends:     python3-pandas-datareader
-#Recommends:     python3-xlrd
-#Recommends:     python3-xlwt
-#%endif
 
 %description
 Vorta is a backup client for macOS and Linux desktops. 
 It integrates the mighty BorgBackup with your desktop environment 
 to protect your data from disk failure, ransomware and theft
 
-%global debug_package %{nil}
-
 %prep
-# opensuse leap has such an old pip version that we must upgrade it so that the install doesn't fail
-#%if 0%{?suse_version:1}
-#alias pip=pip3
-#pip install --user --upgrade pip --trusted-host pypi.org --trusted-host files.pythonhosted.org
-#export PATH=$HOME/.local/bin:$PATH
-#pip --version
-#%endif
 
 %autosetup -n %{srcname}-%{version}
 
@@ -91,6 +84,9 @@ install -D %{_builddir}/%{srcname}-%{version}/src/vorta/assets/metadata/com.borg
 %{_datadir}/*
 
 %changelog
+* Fri Feb 19 2021 Guilherme Cardoso <gjc@ua.pt> 0.7.3-1
+- Improve build dependencies for OpenSuse buildroots
+
 * Sun Jan 31 2021 Guilherme Cardoso <gjc@ua.pt> 0.7.2-1
 - Fix vorta icon.svg source path
 - Add missing buildrequires: python3-pip and python3-setuptools_git
