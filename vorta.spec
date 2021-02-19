@@ -30,8 +30,6 @@ BuildRequires:  python-rpm-macros
 # https://en.opensuse.org/openSUSE:Build_Service_cross_distribution_howto
 #BuildRequires: libappstream-glib8 appstream-glib
 BuildRequires: ca-certificates-cacert ca-certificates-mozilla ca-certificates
-BuildRequires: python38-setuptools-git
-BuildRequires: python38-pytest-runner
 %if 0%{?sle_version}
 # Leap
 # provides libcrypto.so.1
@@ -42,7 +40,6 @@ BuildRequires: libopenssl1_0_0
 %if 0%{?sle_version} == 150200
 # Leap 15.2
 %endif
-BuildRequires:  python3-setuptools_git
 %else
 # Tumbleweed
 # provides libcrypto.so.1
@@ -50,8 +47,6 @@ BuildRequires: libcrypt1
 %endif
 %else
 # not opensuse
-BuildRequires: python3-setuptools-git
-BuildRequires: python3-pytest-runner
 %endif
 
 %description
@@ -86,6 +81,7 @@ install -D %{_builddir}/%{srcname}-%{version}/src/vorta/assets/metadata/com.borg
 %changelog
 * Fri Feb 19 2021 Guilherme Cardoso <gjc@ua.pt> 0.7.3-1
 - Improve build dependencies for OpenSuse buildroots
+- Relax a little on distribution packages needed for building
 
 * Sun Jan 31 2021 Guilherme Cardoso <gjc@ua.pt> 0.7.2-1
 - Fix vorta icon.svg source path
