@@ -2,7 +2,7 @@
 %global debug_package %{nil}
 
 Name:           %{srcname}
-Version:        0.7.3
+Version:        0.7.8
 Release:        1%{?dist}
 Summary:        A GUI for Borg Backup
 License:        GPLv3
@@ -79,6 +79,9 @@ install -D %{_builddir}/%{srcname}-%{version}/src/vorta/assets/metadata/com.borg
 %{_datadir}/*
 
 %changelog
+* Tue Sep 28 2021 Sergi Jimenez <tripledes@fedoraproject.org> 0.7.8-1
+- Update to v0.7.8
+
 * Fri Feb 19 2021 Guilherme Cardoso <gjc@ua.pt> 0.7.3-1
 - Improve build dependencies for OpenSuse buildroots
 - Relax a little on distribution packages needed for building
