@@ -13,9 +13,7 @@ Source0:        https://github.com/borgbase/vorta/archive/v%{version}.tar.gz
 Requires:       python3-appdirs
 Requires:       python3-paramiko
 Requires:       python3-peewee
-Requires:       python3-dateutil
 Requires:       python3-qt5
-Requires:       python3-APScheduler
 Requires:       python3-psutil
 Requires:       python3-secretstorage
 Requires:       borgbackup
