@@ -2,7 +2,7 @@
 %global debug_package %{nil}
 
 Name:           %{srcname}
-Version:        0.7.8
+Version:        0.8.0
 Release:        1%{?dist}
 Summary:        A GUI for Borg Backup
 License:        GPLv3
