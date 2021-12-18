@@ -2,25 +2,25 @@
 %global debug_package %{nil}
 
 Name:           %{srcname}
-Version:        0.8.0
-Release:        1%{?dist}
+Version:        0.8.2
+Release:        2%{?dist}
 Summary:        A GUI for Borg Backup
 License:        GPLv3
 URL:            https://vorta.borgbase.com/
 #Source0:       %{pypi_source}
 Source0:        https://github.com/borgbase/vorta/archive/v%{version}.tar.gz
 
+Requires:	python3 >= 3.7
 Requires:       python3-appdirs
 Requires:       python3-paramiko
 Requires:       python3-peewee
-Requires:       python3-qt5
+#Requires:       python3-pyqt5
 Requires:       python3-psutil
 Requires:       python3-secretstorage
 Requires:       borgbackup
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-pip
-BuildRequires:  python3-wheel
 BuildRequires:  python-rpm-macros
 
 # opensuse compatibility layer taken from copr taw/element
